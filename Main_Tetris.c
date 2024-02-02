@@ -70,7 +70,7 @@ int main(int argc, char** argv, char** environ)
         if (currentGameState == MAIN_MENU)
         {
             BeginDrawing();
-            ClearBackground(RAYWHITE); // Usa il colore del tuo gioco
+            ClearBackground(RAYWHITE);
 
             DrawText("Press ENTER to Play or ESC to Quit", 100, 200, 20, BLACK);
 
@@ -80,11 +80,10 @@ int main(int argc, char** argv, char** environ)
             {
                 currentGameState = GAMEPLAY;
                 gameReset = true;
-                // Altre inizializzazioni necessarie per il gioco
             }
             else if (IsKeyPressed(KEY_ESCAPE))
             {
-                break; // Esci dal gioco se viene premuto ESC nel menu principale
+                break;
             }
         }
         else if (currentGameState == GAMEPLAY)
@@ -124,7 +123,7 @@ int main(int argc, char** argv, char** environ)
             if (IsKeyPressed(KEY_RIGHT))
             {
                 PlaySound(MovetetrominoSound);
-                // No need to check overflow, wall is your protector
+
                 if (!CheckCollision(currentTetrominoX+1,currentTetrominoY,tetrominoTypes[currentTetrominoType][currentRotation]))
                 {
                     currentTetrominoX++;
@@ -133,7 +132,7 @@ int main(int argc, char** argv, char** environ)
             if (IsKeyPressed(KEY_LEFT))
             {
                 PlaySound(MovetetrominoSound);
-                // No need to check overflow, wall is your protector
+                
                 if (!CheckCollision(currentTetrominoX-1,currentTetrominoY,tetrominoTypes[currentTetrominoType][currentRotation]))
                 {
                     currentTetrominoX--;
@@ -152,10 +151,6 @@ int main(int argc, char** argv, char** environ)
 
                 else
                 {
-                    // const int currentTetrominoOffset = currentTetrominoY * STAGE_WIDTH + currentTetrominoX;
-                    
-                    // stage[currentTetrominoOffset] = 1;
-
                     for(int y = 0; y < TETROMINO_SIZE; y++)
                     {
                         for(int x = 0; x < TETROMINO_SIZE; x++)
@@ -194,7 +189,6 @@ int main(int argc, char** argv, char** environ)
             BeginDrawing();
             ClearBackground(GRAY);
 
-            //Draw Stage, Tetromino, Text
             for(int y = 0; y < STAGE_HEIGHT; y++)
             {
                 for(int x = 0; x < STAGE_WIDTH; x++)
@@ -225,7 +219,7 @@ int main(int argc, char** argv, char** environ)
         }
         else if (currentGameState == GAME_OVER)
         {
-            // Schermata "Game Over"
+            //"Game Over" Scene
             BeginDrawing();
             ClearBackground(RAYWHITE);
 
