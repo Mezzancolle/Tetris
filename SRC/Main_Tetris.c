@@ -1,4 +1,5 @@
-#include <Tetris.h>
+#include <Tetris_Functions.h>
+#include <Tetris_Stage.h>
 
 int main(int argc, char** argv, char** environ)
 {
