@@ -60,7 +60,7 @@ int main(int argc, char** argv, char** environ)
     float timeToMoveTetrominoDown = moveTetrominoDownTimer;
 
     //Window
-    InitWindow(windowWidth, windowHeight, "Title");
+    InitWindow(windowWidth, windowHeight, "Tetris");
     SetTargetFPS(60);
 
     GameState currentGameState = MAIN_MENU;
@@ -79,7 +79,6 @@ int main(int argc, char** argv, char** environ)
             if (IsKeyPressed(KEY_ENTER))
             {
                 currentGameState = GAMEPLAY;
-                gameReset = true;
             }
             else if (IsKeyPressed(KEY_ESCAPE))
             {
@@ -231,9 +230,6 @@ int main(int argc, char** argv, char** environ)
             if (IsKeyPressed(KEY_ENTER))
             {
                 currentGameState = MAIN_MENU;
-                score = 0;
-                flashActive = false;
-                flashFrameCount = 0;
             }
             else if (IsKeyPressed(KEY_ESCAPE))
             {
