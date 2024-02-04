@@ -48,13 +48,17 @@ int main(int argc, char** argv, char** environ)
     InitAudioDevice(); 
     Music music = LoadMusicStream("Music/Background.mp3");
     PlayMusicStream(music);
-    float timePlayed = 0.0f; 
 
     //Move Tetromino Sound
     Sound MovetetrominoSound = LoadSound("Music/MoveTetromino.mp3");
 
     //Delete Lines Sound
     Sound lineClearSound = LoadSound("Music/LineClear.mp3");
+
+    //Music volume
+    SetMusicVolume(music, 0.05f);
+    SetSoundVolume(MovetetrominoSound, 0.05f);
+    SetSoundVolume(lineClearSound, 0.05f);
 
     //TetrominoSpeed
     float moveTetrominoDownTimer = 1.f;
@@ -65,6 +69,8 @@ int main(int argc, char** argv, char** environ)
     SetTargetFPS(60);
 
     GameState currentGameState = MAIN_MENU;
+
+    
     
     while(!WindowShouldClose())
     {
@@ -95,8 +101,6 @@ int main(int argc, char** argv, char** environ)
 
             //Music
             UpdateMusicStream(music);
-            timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
-            if (timePlayed > 1.0f) timePlayed = 1.0f;
 
             //VelocityTetromino
             timeToMoveTetrominoDown -= GetFrameTime();
